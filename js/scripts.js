@@ -98,7 +98,8 @@ $(function(){
                 valor_total *= 0.95;
             }
             
-            console.log(valor_total);
+            console.log('parametros: ', parametros)
+            console.log('valor total: ', valor_total);
             $('.refresh-loader').hide();
 
     };
@@ -113,7 +114,13 @@ $(function(){
 
         $('.option-filter div').click(function(){
 
-            $(this).parent().children('div').removeClass('selected');
+            $(this).parent().children('div').removeClass('selected'); //com o .parent ele pega o elemento pai que tem as duas opçoes, depois pega o children div e tira a classe selected dos 2
+            $(this).addClass('selected'); //Dessa forma ja conseguimos selecionar o filtro que a gente clica
+
+            var categoria = $(this).parent().attr('id'); //dessa forma vamos saber qual botao foi clicado
+            parametros_pesquisa[categoria] = $(this).attr('id'); //atualizando parametros_pesquisa
+            atualizar_orcamento(parametros_pesquisa);
+
         });
 
         // b. Faça o evento change para os filtros do tipo <select> e para o <input> de quantidade.
