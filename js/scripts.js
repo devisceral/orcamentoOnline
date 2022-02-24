@@ -125,6 +125,18 @@ $(function(){
 
         // b. Faça o evento change para os filtros do tipo <select> e para o <input> de quantidade.
 
+        $('select').change(function(){
+
+            var parametros_select = $(this).attr('id');
+            parametros_pesquisa[parametros_select] = $(this).val();
+            atualizar_orcamento(parametros_pesquisa);
+        });
+
+        $('#quantidade').change(function(){
+            var parametro_input = $(this).attr('id');
+            parametros_pesquisa[parametro_input] = $(this).val();
+            atualizar_orcamento(parametros_pesquisa);
+        });
         // c. Sempre que um dos eventos acima ocorrer, atualize a variável "parametros_pesquisa" e rode a função para 
         // calcular o preço
 
