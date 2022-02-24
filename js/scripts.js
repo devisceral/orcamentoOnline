@@ -99,35 +99,50 @@ $(function(){
             }
             
             console.log(valor_total);
+            $('.refresh-loader').hide();
 
     };
 
     atualizar_orcamento(parametros_pesquisa);
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // 2. Faça os eventos click e change para os filtros.
     
+        // a. Faça o evento click para os filtros do tipo botão (.option-filter). Sempre que houver um click, 
+        // remova a classe "selected" dos botões do grupo e depois aplique-a apenas ao que foi clicado para
+        // que ele fique azul.
+
+        $('.option-filter div').click(function(){
+
+            $(this).parent().children('div').removeClass('selected');
+        });
+
+        // b. Faça o evento change para os filtros do tipo <select> e para o <input> de quantidade.
+
+        // c. Sempre que um dos eventos acima ocorrer, atualize a variável "parametros_pesquisa" e rode a função para 
+        // calcular o preço
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 });
 
