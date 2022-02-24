@@ -100,17 +100,21 @@ $(function(){
             
             // Atualizando os valores, os campos vão ter que ser tratados separadamente.
 
-            $('#result_gola').html( parametros.gola );
-            $('#result_estampa').html( parametros.estampa );
-            $('#result_qualidade').html( parametros.qualidade );
-            $('#result_cor').html( parametros.cor );
-            $('#result_embalagem').html( parametros.embalagem );
-            $('#result_quantidade').html( parametros.quantidade );
-            $('#valor-total').html( valor_total );
-            $('#foto-produto').attr('src', foto);
+            window.setTimeout(function(){
 
-
-            $('.refresh-loader').hide();
+                $('#result_gola').html( parametros.gola );
+                $('#result_estampa').html( parametros.estampa );
+                $('#result_qualidade').html( parametros.qualidade );
+                $('#result_cor').html( parametros.cor );
+                $('#result_embalagem').html( parametros.embalagem );
+                $('#result_quantidade').html( parametros.quantidade );
+                $('#valor-total').html( valor_total );
+                $('#foto-produto').attr('src', foto);
+    
+    
+                $('.refresh-loader').hide();
+            },1000);
+            
 
     };
 
