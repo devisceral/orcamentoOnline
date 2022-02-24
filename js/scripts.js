@@ -56,16 +56,13 @@ var camisetas = {
 // parâmetros da pesquisa
 
 var parametros_pesquisa = {
-    "quantidade": 10,
+    "quantidade": 100,
     "cor": "colorida",
     "gola": "gola_v",
     "qualidade": "q150",
     "estampa": "com_estampa",
     "embalagem": "bulk"
 }
-
-
-
 
 $(function(){
 
@@ -79,13 +76,29 @@ $(function(){
 
         var valor_total = quantidade * preco_unit;
 
-        console.log(valor_total);
+        // A camisa de qualidade alta (190g/m2) deve acrescer o preço unitário em 12%.
 
-        // Atualizar a página
+        if (parametros.qualidade == 'q190') {
+            valor_total *= 1.12;
+        }
 
-        // verificar local storage e atualizar a variável parametros_pesquisa
+        // 3. A embalagem unitária tem um custo de 0.15 por unidade
 
-       
+        if (parametros.embalagem == 'unitaria') {
+            valor_total += (quantidade * 0.15);
+        }
+
+        // 4. Após cálculo do preço, há que se aplicar um desconto por quantidade, sendo: 
+            // faixa 1: acima de 1.000 - Desconto de 15%
+            if (quantidade >= 1000) {
+                valor_total *= 0.85;
+            } else if (quantidade >= 500){// faixa 2: acima de 500 - Desconto de 10%
+                valor_total *= 0.90;
+            } else if (quantidade >= 100){// faixa 3: acima de 100 - Desconto de 5%
+                valor_total *= 0.95;
+            }
+            
+            console.log(valor_total);
 
     };
 
@@ -93,6 +106,28 @@ $(function(){
     
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     
 });
 
