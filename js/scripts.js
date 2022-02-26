@@ -102,15 +102,25 @@ $(function(){
 
             window.setTimeout(function(){
 
-                $('#result_gola').html( parametros.gola );
-                $('#result_estampa').html( parametros.estampa );
-                $('#result_qualidade').html( parametros.qualidade );
-                $('#result_cor').html( parametros.cor );
-                $('#result_embalagem').html( parametros.embalagem );
+                var id_gola = '#' + parametros.gola;
+                $('#result_gola').html( $(id_gola).html());
+
+                var id_estampa = "option[value='" + parametros.estampa + "']";
+                $('#result_estampa').html( $(id_estampa).html());
+                
+                var id_qualidade = '#' + parametros.qualidade;
+                $('#result_qualidade').html( $(id_qualidade).html());
+
+                var id_cor = '#' + parametros.cor;
+                $('#result_cor').html( $(id_cor).html());
+
+                var id_embalagem = "option[value='" + parametros.embalagem + "']";
+                $('#result_embalagem').html( $(id_embalagem).html());
+
+
                 $('#result_quantidade').html( parametros.quantidade );
-                $('#valor-total').html( valor_total );
+                $('#valor-total').html( valor_total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2}) ); 
                 $('#foto-produto').attr('src', foto);
-    
     
                 $('.refresh-loader').hide();
             },1000);
