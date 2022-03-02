@@ -155,7 +155,15 @@ $(function(){
 
     }
 
-    
+    function atualizar_localStorage(parametros) {
+        window.localStorage.setItem('quantidade', parametros.quantidade);
+        window.localStorage.setItem('cor', parametros.cor);
+        window.localStorage.setItem('gola', parametros.gola);
+        window.localStorage.setItem('qualidade', parametros.qualidade);
+        window.localStorage.setItem('estampa', parametros.estampa);
+        window.localStorage.setItem('embalagem', parametros.embalagem);
+
+    };
     
     
     // 2. Faça os eventos click e change para os filtros.
@@ -171,6 +179,7 @@ $(function(){
 
             var categoria = $(this).parent().attr('id'); //dessa forma vamos saber qual botao foi clicado
             parametros_pesquisa[categoria] = $(this).attr('id'); //atualizando parametros_pesquisa
+            atualizar_localStorage(parametros_pesquisa)
             atualizar_orcamento(parametros_pesquisa);
 
         });
@@ -181,12 +190,14 @@ $(function(){
 
             var parametros_select = $(this).attr('id');
             parametros_pesquisa[parametros_select] = $(this).val();
+            atualizar_localStorage(parametros_pesquisa)
             atualizar_orcamento(parametros_pesquisa);
         });
 
         $('#quantidade').change(function(){
             var parametro_input = $(this).attr('id');
             parametros_pesquisa[parametro_input] = $(this).val();
+            atualizar_localStorage(parametros_pesquisa)
             atualizar_orcamento(parametros_pesquisa);
         });
         // c. Sempre que um dos eventos acima ocorrer, atualize a variável "parametros_pesquisa" e rode a função para 
