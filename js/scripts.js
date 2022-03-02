@@ -56,11 +56,11 @@ var camisetas = {
 // parâmetros da pesquisa
 
 var parametros_pesquisa = {
-    "quantidade": 100,
+    "quantidade": 1,
     "cor": "colorida",
     "gola": "gola_v",
     "qualidade": "q150",
-    "estampa": "com_estampa",
+    "estampa": "sem_estampa",
     "embalagem": "bulk"
 }
 
@@ -128,7 +128,35 @@ $(function(){
 
     };
 
-    atualizar_orcamento(parametros_pesquisa);
+    function atualizar_campos (parametros) {
+        //cor
+        $('#cor').children().removeClass('selected');
+        var id_cor = '#' + parametros.cor;
+        $(id_cor).addClass('selected');
+
+        //gola
+        $('#gola').children().removeClass('selected');
+        var id_gola = '#' + parametros.gola;
+        $(id_gola).addClass('selected');
+
+        //qualidade
+        $('#qualidade').children().removeClass('selected');
+        var id_qualidade = '#' + parametros.qualidade;
+        $(id_qualidade).addClass('selected');
+
+        //estampa
+        $('#estampa').val(parametros.estampa);
+         
+        //embalagem
+        $('#embalagem').val(parametros.embalagem);
+
+        //quantidade
+        $('#quantidade').val(parametros.quantidade);
+
+    }
+
+    
+    
     
     // 2. Faça os eventos click e change para os filtros.
     
@@ -164,7 +192,8 @@ $(function(){
         // c. Sempre que um dos eventos acima ocorrer, atualize a variável "parametros_pesquisa" e rode a função para 
         // calcular o preço
 
-
+        atualizar_campos (parametros_pesquisa);
+        atualizar_orcamento(parametros_pesquisa);
 
 
 
